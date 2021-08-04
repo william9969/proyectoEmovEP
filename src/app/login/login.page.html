@@ -1,9 +1,60 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>login</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content>
 
-</ion-content>
+  <ion-grid class="grid1">
+  
+      <ion-row class="row1">
+          <ion-col>
+  
+          </ion-col>
+      </ion-row>
+  
+      <ion-row class="row2">
+          <ion-col>
+  
+          </ion-col>
+      </ion-row>
+  
+  </ion-grid>
+  
+  <ion-slide>
+      <div class="contaier-login">
+          <ion-grid>
+              <ion-row>
+                  <ion-col>
+                      <img src="../../../assets/icon/logo.jpg" id="imagen">
+                      <h1 style="color: black;">Iniciar Sesión</h1>
+                  </ion-col>
+              </ion-row>
+              <ion-row>
+                  <ion-col>
+                      <ion-list>
+                          <ion-item>
+                              <ion-icon name="person" class="icon-login"></ion-icon>
+                              <ion-input name="user" type="text" required placeholder="Usuario" [(ngModel)]="usuario.correo"></ion-input>
+                          </ion-item>
+                          <br />
+                          <ion-item>
+                              <ion-icon name="lock-closed" class="icon-login"></ion-icon>
+                              <ion-input name="password" type="password" required placeholder="Contraseña" [(ngModel)]="usuario.clave"></ion-input>
+                          </ion-item>
+  
+                      </ion-list>
+                  </ion-col>
+              </ion-row>
+              <ion-row>
+                  <ion-col>
+                    <img src="https://image.flaticon.com/icons/png/512/58/58950.png" id="imagen1">
+                    <img src="https://img.icons8.com/color/452/google-logo.png" id="imagen2">
+                  </ion-col>
+              </ion-row>
+              <ion-row>
+                  <ion-col>
+                      <ion-label>
+                        <ion-button id="botonEnviar" color="primary" shape="round" fill="solid"(click)="login()">Login</ion-button>
+                        <ion-button id="botonEnviar1" color="primary" shape="round" fill="solid"(click)="login()">Login Google</ion-button>
+                      </ion-label>
+                  </ion-col>
+              </ion-row>
+          </ion-grid>
+      </div>
+  </ion-slide>
