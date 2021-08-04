@@ -1,0 +1,6 @@
+{
+	"appId": "io.ionic.starter",
+	"appName": "emovEP",
+	"webDir": "www",
+	"bundledWebRuntime": false
+}
