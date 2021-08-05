@@ -30,4 +30,5 @@ export class UsuariosService {
     return this.afs.collection('usuario',
       ref => ref.where('correo', '==', correo).where('clave','==',clave)).valueChanges();
   }
+  
 }
