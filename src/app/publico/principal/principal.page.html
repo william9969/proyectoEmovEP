@@ -27,34 +27,13 @@
       </ion-header>
       <ion-content>
         <ion-list>
-          <ion-item >
-            <ion-icon name="home-outline" slot="start"></ion-icon>
-            <ion-label>Inicio</ion-label>
+          <ion-item  *ngFor="let m of menuConductores">
+            <ion-icon slot="start" name="{{m.icon}}" ></ion-icon>
+            <ion-label>
+              <h2>{{m.nombre}}</h2>
+            </ion-label>
           </ion-item>
-          <ion-item>
-            <ion-icon name="clipboard-outline" slot="start"></ion-icon>
-            <ion-label>Multas e Infracciones</ion-label>
-          </ion-item>
-          <ion-item>
-            <ion-icon name="business-outline" slot="start"></ion-icon>
-            <ion-label>Agencias EmovEP</ion-label>
-          </ion-item>
-          <ion-item>
-            <ion-icon name="car-outline" slot="start"></ion-icon>
-            <ion-label>Matriculacion Vehicular</ion-label>
-          </ion-item>
-          <ion-item>
-            <ion-icon name="earth-outline" slot="start"></ion-icon>
-            <ion-label>Revicion Tecnica Vehicular</ion-label>
-          </ion-item>
-          <ion-item>
-            <ion-icon name="people-outline" slot="start"></ion-icon>
-            <ion-label>Acerca de</ion-label>
-          </ion-item>
-          <ion-item>
-            <ion-icon name="mail-outline" slot="start"></ion-icon>
-            <ion-label>Contactenos</ion-label>
-          </ion-item>
+         
           
         </ion-list>
         <br/>

@@ -11,5 +11,12 @@ export class PrincipalPage implements OnInit {
 
   ngOnInit() {
   }
+  public menuAgente = [
+    { icon: 'home-outline', nombre: 'Inicio'},
+    { icon: 'clipboard-outline', nombre: 'Crear Multas'},
+    { icon: 'business-outline', nombre: 'Agencias EmovEP'},
+    { icon: 'people-outline', nombre: 'Acerca de'},
+    { icon: 'mail-outline', nombre: 'Contactenos'},
+  ];
 
 }
