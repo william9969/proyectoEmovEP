@@ -27,7 +27,7 @@
       </ion-header>
       <ion-content>
         <ion-list>
-          <ion-item  *ngFor="let m of menuConductores">
+          <ion-item  *ngFor="let m of menuConductores" (click)="navegar(m.path)">
             <ion-icon slot="start" name="{{m.icon}}" ></ion-icon>
             <ion-label>
               <h2>{{m.nombre}}</h2>

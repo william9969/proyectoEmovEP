@@ -12,15 +12,44 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
-    path: 'principalConductores',
+    path: 'publico/principalConductores',
     loadChildren: () => import('./publico/principal/principal.module').then( m => m.PrincipalPageModule)
   },
   {
-    path: 'principalAgentes',
+    path: 'privado/principalAgentes',
     loadChildren: () => import('./privado/principal/principal.module').then( m => m.PrincipalPageModule)
-  },  {
-    path: 'registrar',
-    loadChildren: () => import('./registrar/registrar.module').then( m => m.RegistrarPageModule)
+  },
+  {
+    path: 'publico/agencias',
+    loadChildren: () => import('./publico/agencias/agencias.module').then( m => m.AgenciasPageModule)
+  },
+  {
+    path: 'publico/acerca-de',
+    loadChildren: () => import('./publico/acerca-de/acerca-de.module').then( m => m.AcercaDePageModule)
+  },
+  {
+    path: 'publico/contactenos',
+    loadChildren: () => import('./publico/contactenos/contactenos.module').then( m => m.ContactenosPageModule)
+  },
+  {
+    path: 'privado/multas',
+    loadChildren: () => import('./privado/multas/multas.module').then( m => m.MultasPageModule)
+  },
+  {
+    path: 'privado/agencias',
+    loadChildren: () => import('./privado/agencias/agencias.module').then( m => m.AgenciasPageModule)
+  },
+  {
+    path: 'privado/acerca-de',
+    loadChildren: () => import('./privado/acerca-de/acerca-de.module').then( m => m.AcercaDePageModule)
+  },
+  {
+    path: 'privado/contactenos',
+    loadChildren: () => import('./privado/contactenos/contactenos.module').then( m => m.ContactenosPageModule)
+  },
+  {
+    path: 'publico/mismultas',
+    loadChildren: () => import('./publico/mismultas/mismultas.module').then( m => m.MismultasPageModule)
   }
 
   
