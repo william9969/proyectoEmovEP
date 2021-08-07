@@ -51,6 +51,7 @@ const routes: Routes = [
     path: 'publico/mismultas',
     loadChildren: () => import('./publico/mismultas/mismultas.module').then( m => m.MismultasPageModule)
   }
+
   
 ];
 
