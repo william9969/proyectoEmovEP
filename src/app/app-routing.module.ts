@@ -18,7 +18,11 @@ const routes: Routes = [
   {
     path: 'principalAgentes',
     loadChildren: () => import('./privado/principal/principal.module').then( m => m.PrincipalPageModule)
+  },  {
+    path: 'registrar',
+    loadChildren: () => import('./registrar/registrar.module').then( m => m.RegistrarPageModule)
   }
+
   
 ];
 
