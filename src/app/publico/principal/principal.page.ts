@@ -11,5 +11,14 @@ export class PrincipalPage implements OnInit {
 
   ngOnInit() {
   }
+  public menuConductores = [
+    { icon: 'home-outline', nombre: 'Inicio'},
+    { icon: 'clipboard-outline', nombre: 'Multas e Infracciones'},
+    { icon: 'business-outline', nombre: 'Agencias EmovEP'},
+    { icon: 'car-outline', nombre: 'Matriculacion Vehicular'},
+    { icon: 'earth-outline', nombre: 'Revicion Tecnica Vehicular'},
+    { icon: 'people-outline', nombre: 'Acerca de'},
+    { icon: 'mail-outline', nombre: 'Contactenos'},
+  ];
 
 }
