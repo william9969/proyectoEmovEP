@@ -5,5 +5,113 @@
 </ion-header>
 
 <ion-content>
+<ion-app>
+    <ion-menu side="start" content-id="main-content">
+      <ion-header>
+        <ion-toolbar translucent>
+          <ion-title>Menu</ion-title>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content>
+        <ion-list>
+           <ion-item  *ngFor="let m of menuAgente" (click)="navegar(m.path)">
+            <ion-icon slot="start" name="{{m.icon}}"></ion-icon>
+            <ion-label>
+              <h2>{{m.nombre}}</h2>
+            </ion-label>
+          </ion-item>
+        </ion-list>
+        <br/>
+        <br/>
+         <ion-button color="medium" expand="full" >Cerrar Sesion</ion-button>
+      </ion-content>
+    </ion-menu>
 
+    <div class="ion-page" id="main-content">
+      <ion-header>
+        <ion-toolbar>
+          <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+          </ion-buttons>
+          <ion-title>Bienvenido NombreUsuario </ion-title>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content class="ion-padding">
+        <h1>Recuerda mover el mapa, indicando con el puntero tu direccion para saber cual esta mas cerca de ti </h1>
+        <ion-list>
+         
+           <ion-card>
+              <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom" (centerChange)="newAddressM($event)">
+                <agm-marker [latitude]="lat" [longitude]="lng" [iconUrl]="icons.shop"></agm-marker>
+                <agm-marker [latitude]="centerLocation.latitude" [longitude]="centerLocation.longitude" [iconUrl]="icons.pointer"></agm-marker>
+              </agm-map>
+              <ion-card-header>
+              <ion-card-title>Agencia Misicata</ion-card-title>
+            </ion-card-header>
+            <ion-card-content>
+              Sector: Yanuncay
+              <br/>
+              Direccion: Luis Moscoso 103 y Carlos Arizaga Toral 
+              <br/> 
+              A {{totalM}} Km de ti.
+            </ion-card-content>
+            <ion-button expand="block">Google Maps</ion-button>
+          </ion-card>
+
+           <ion-card>
+            <agm-map [latitude]="lat2" [longitude]="lng2" [zoom]="zoom" (centerChange)="newAddressT($event)">
+                <agm-marker [latitude]="lat2" [longitude]="lng2" [iconUrl]="icons.shop"></agm-marker>
+                <agm-marker [latitude]="centerLocation.latitude" [longitude]="centerLocation.longitude" [iconUrl]="icons.pointer"></agm-marker>
+              </agm-map>
+            <ion-card-header>
+              <ion-card-title>Agencia Terminal Terrestre</ion-card-title>
+            </ion-card-header>
+            <ion-card-content>
+              Sector: El Vecino
+              <br/>
+              Direccion: Av. España 304 y Chapetones
+              <br/> 
+              A {{totalT}} Km de ti.
+            </ion-card-content>
+            <ion-button expand="block">Google Maps</ion-button>
+          </ion-card>
+          <ion-card>
+          <agm-map [latitude]="lat3" [longitude]="lng3" [zoom]="zoom" (centerChange)="newAddressMa($event)">
+                <agm-marker [latitude]="lat3" [longitude]="lng3" [iconUrl]="icons.shop"></agm-marker>
+                <agm-marker [latitude]="centerLocation.latitude" [longitude]="centerLocation.longitude" [iconUrl]="icons.pointer"></agm-marker>
+              </agm-map>
+            <ion-card-header>
+              <ion-card-title>Agencia Mayancela</ion-card-title>
+            </ion-card-header>
+            <ion-card-content>
+              Sector: Hermano Miguel
+              <br/>
+              Direccion: La Compania 681 y Calle Miguel T
+              <br/> 
+              A {{totalMa}} Km de ti.
+            </ion-card-content>
+            <ion-button expand="block">Google Maps</ion-button>
+          </ion-card>
+
+           <ion-card>
+            <agm-map [latitude]="lat4" [longitude]="lng4" [zoom]="zoom" (centerChange)="newAddressC($event)">
+                <agm-marker [latitude]="lat4" [longitude]="lng4" [iconUrl]="icons.shop"></agm-marker>
+                <agm-marker [latitude]="centerLocation.latitude" [longitude]="centerLocation.longitude" [iconUrl]="icons.pointer"></agm-marker>
+              </agm-map>
+            <ion-card-header>
+              <ion-card-title>Agencia Capulispamba</ion-card-title>
+            </ion-card-header>
+            <ion-card-content>
+              Sector: Panamericana Norte
+              <br/>
+              Direccion: Panamericana Norte y Unión Soviética 1-03
+              <br/> 
+              A {{totalC}} Km de ti.
+            </ion-card-content>
+            <ion-button expand="block">Google Maps</ion-button>
+          </ion-card>
+          </ion-list>
+      </ion-content>
+    </div>
+  </ion-app>
 </ion-content>
