@@ -32,20 +32,24 @@ const routes: Routes = [
     loadChildren: () => import('./publico/contactenos/contactenos.module').then( m => m.ContactenosPageModule)
   },
   {
-    path: 'multas',
+    path: 'privado/multas',
     loadChildren: () => import('./privado/multas/multas.module').then( m => m.MultasPageModule)
   },
   {
-    path: 'agencias',
+    path: 'privado/agencias',
     loadChildren: () => import('./privado/agencias/agencias.module').then( m => m.AgenciasPageModule)
   },
   {
-    path: 'acerca-de',
-    loadChildren: () => import('./acerca-de/acerca-de.module').then( m => m.AcercaDePageModule)
+    path: 'privado/acerca-de',
+    loadChildren: () => import('./privado/acerca-de/acerca-de.module').then( m => m.AcercaDePageModule)
   },
   {
-    path: 'contactenos',
+    path: 'privado/contactenos',
     loadChildren: () => import('./privado/contactenos/contactenos.module').then( m => m.ContactenosPageModule)
+  },
+  {
+    path: 'publico/mismultas',
+    loadChildren: () => import('./publico/mismultas/mismultas.module').then( m => m.MismultasPageModule)
   }
   
 ];
