@@ -29,9 +29,9 @@ export class LoginPage implements OnInit {
       this.usuario2=data[0]
       try{
         if(this.usuario2.correo==correo && this.usuario2.clave==clave && this.usuario2.rol=='agente'){
-          this.route.navigate(['privado/principal']);
+          this.route.navigate(['principalAgentes']);
         }else if(this.usuario2.correo==correo && this.usuario2.clave==clave && this.usuario2.rol=='cliente'){
-          this.route.navigate(['publico/principal']);
+          this.route.navigate(['principalConductores']);
         }
       }
       catch(error){console.log('Error: ->', error);
@@ -47,9 +47,16 @@ export class LoginPage implements OnInit {
     const nombre = user.additionalUserInfo.profile['given_name'];
     const apellido= user.additionalUserInfo.profile['family_name'];
 
-    const mensaje = "Bienvenido" + nombre + ", " + apellido;
+    const mensaje = "Bienvenido: " + nombre + ", " + apellido;
 
     alert(mensaje);
-    this.route.navigate(['publico/principal']);
+    this.usuario2.uid = user.additionalUserInfo.profile['id'];
+    this.usuario2.nombre = user.additionalUserInfo.profile['given_name'];
+    this.usuario2.apellido =  user.additionalUserInfo.profile['family_name'];
+    this.usuario2.correo = user.additionalUserInfo.profile['email'];
+    this.usuario2.clave = user.additionalUserInfo.profile['id'];
+    this.usuario2.rol = "cliente";
+    this.usuarioService.save(this.usuario2);
+    this.route.navigate(['principalConductores']);
   }
 }
