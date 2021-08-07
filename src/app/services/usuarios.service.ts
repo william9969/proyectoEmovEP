@@ -18,6 +18,7 @@ export class UsuariosService {
     }
 
     refUsuarios.doc(usuario.uid).set(Object.assign({}, usuario));
+    return true;
   }
 
   getUsuarios(): Observable<any[]>{

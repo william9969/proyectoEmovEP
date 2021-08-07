@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 export class PrincipalPage implements OnInit {
 
   constructor(private router:Router) { }
-
+ 
   ngOnInit() {
   }
   public menuConductores = [
@@ -22,7 +22,7 @@ export class PrincipalPage implements OnInit {
     { icon: 'mail-outline', nombre: 'Contactenos',path:'publico/contactenos'},
   ];
   navegar(nombre: any){
-    console.log(nombre)
+    //console.log(nombre)
     this.router.navigate([nombre])
-}
+  }
 }

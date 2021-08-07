@@ -7,13 +7,17 @@ import { IonicModule } from '@ionic/angular';
 import { AgenciasPageRoutingModule } from './agencias-routing.module';
 
 import { AgenciasPage } from './agencias.page';
+import { AgmCoreModule } from '@agm/core';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    AgenciasPageRoutingModule
+    AgenciasPageRoutingModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyCT9wzsIIAkW95uHWVvCbBEP-xtjNbJPow'
+    }),
   ],
   declarations: [AgenciasPage]
 })
