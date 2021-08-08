@@ -22,7 +22,7 @@ export class UsuariosService {
   }
 
   getUsuarios(): Observable<any[]>{
-    return this.afs.collection("usuarios"
+    return this.afs.collection("usuario"
     ).valueChanges();
   }
 
@@ -30,6 +30,12 @@ export class UsuariosService {
     console.log('Correo: ' + correo);
     return this.afs.collection('usuario',
       ref => ref.where('correo', '==', correo).where('clave','==',clave)).valueChanges();
+  }
+
+  findId(cedula: string): Observable<any>{
+    console.log('Cedula: ' + cedula);
+    return this.afs.collection('usuario',
+      ref => ref.where('cedula', '==', cedula).where('rol','==', "cliente")).valueChanges();
   }
   
 }

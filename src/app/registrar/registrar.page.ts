@@ -39,7 +39,7 @@ export class RegistrarPage implements OnInit {
     this.usuario.rol="cliente";
     let user = this.usuarioService.save(this.usuario);
     if (user == true) {
-      this.router.navigate(['principalConductores']);
+      this.router.navigate(['publico/principalConductores']);
     }
   }
 }
