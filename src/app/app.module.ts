@@ -11,10 +11,14 @@ import { environment } from 'src/environments/environment';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AgmCoreModule } from '@agm/core';
 import { EmailComposer } from '@ionic-native/email-composer/ngx';
+import { HttpClientModule } from '@angular/common/http';
+import { FileOpener } from '@ionic-native/file-opener/ngx';
+
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
-  imports: [BrowserModule, 
+  imports: [BrowserModule,
+    HttpClientModule, 
     IonicModule.forRoot(),
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
@@ -24,7 +28,9 @@ import { EmailComposer } from '@ionic-native/email-composer/ngx';
       apiKey: 'AIzaSyCT9wzsIIAkW95uHWVvCbBEP-xtjNbJPow'
     }),],
   providers: [
-    EmailComposer,{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy}],
+    EmailComposer,{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy},
+    FileOpener
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
