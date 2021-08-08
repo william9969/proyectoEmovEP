@@ -8,6 +8,8 @@ import { EmailComposer } from '@ionic-native/email-composer/ngx';
 
 import pdfMake from 'pdfmake/build/pdfmake';
 import pdfFonts from 'pdfmake/build/vfs_fonts';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Multa } from 'src/app/domain/multa';
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
 @Component({
@@ -17,16 +19,29 @@ pdfMake.vfs = pdfFonts.pdfMake.vfs;
 })
 export class ComprobantePage implements OnInit {
 
-  multas: any;
+  multas: Multa = new Multa();
   myForm: FormGroup;
   pdfObj = null;
   logoData = null;
 
-  constructor(private fb: FormBuilder, private plt: Platform, private http: HttpClient,
-    private fileOpener: FileOpener, private multaService: MultasService,public  emailComposer: EmailComposer) { }
+  constructor(private route: ActivatedRoute, private router: Router,
+    private fb: FormBuilder, private plt: Platform, private http: HttpClient,
+    private fileOpener: FileOpener, private multaService: MultasService,public  emailComposer: EmailComposer) { 
+
+      route.queryParams.subscribe(params=>{
+        console.log('Son los parametros de llegada',params);
+        this.multas=params.multas;
+        if(this.router.getCurrentNavigation().extras.queryParams){
+          this.multas=this.router.getCurrentNavigation().extras.queryParams.multas;
+          console.log('Persona a editar',this.multas);
+        }
+      });
+
+      console.log(this.multas);
+    }
 
   ngOnInit() {
-    this.multas = this.multaService.getMultas();
+
     this.myForm = this.fb.group({
       showLogo: true,
       from: 'EMOV',
@@ -34,7 +49,7 @@ export class ComprobantePage implements OnInit {
       text: 'Estimado usuario: User se ha generado este documento de pago favor de acercarse a la agencia más cercana para realizar el pago de su infracción de tránsito.'
     }),
     this.loadLocalAssetToBase64();
-    console.log(this.multas.nombre);
+    
   }
 
   loadLocalAssetToBase64(){
@@ -46,10 +61,6 @@ export class ComprobantePage implements OnInit {
       }
       reader.readAsDataURL(res);
     })
-  }
-
-  async takePhoto(){
-    let image = this.multaService.getMultas();
   }
 
   createPdf(){
