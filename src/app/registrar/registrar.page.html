@@ -28,6 +28,11 @@
               <ion-row>
                   <ion-col>
                       <ion-list>
+                        <ion-item>
+                            <ion-icon name="id-card" class="icon-login"></ion-icon>
+                            <ion-input name="id" type="text" required placeholder="Cedula" [(ngModel)]="usuario.cedula"></ion-input>
+                        </ion-item>
+                        <br />
                           <ion-item>
                             <ion-icon name="person" class="icon-login"></ion-icon>
                             <ion-input name="name" type="text" required placeholder="Nombre" [(ngModel)]="usuario.nombre"></ion-input>
@@ -40,7 +45,7 @@
                         <br />
                           <ion-item>
                               <ion-icon name="mail" class="icon-login"></ion-icon>
-                              <ion-input name="user" type="text" required placeholder="Usuario" [(ngModel)]="usuario.correo"></ion-input>
+                              <ion-input name="user" type="text" required placeholder="Correo" [(ngModel)]="usuario.correo"></ion-input>
                           </ion-item>
                           <br />
                           <ion-item>
