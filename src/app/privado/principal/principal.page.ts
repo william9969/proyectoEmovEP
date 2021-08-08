@@ -20,7 +20,7 @@ export class PrincipalPage implements OnInit {
   ];
 
   navegar(nombre: any){
-      console.log(nombre)
+    //  console.log(nombre)
       this.router.navigate([nombre])
   }
 }
