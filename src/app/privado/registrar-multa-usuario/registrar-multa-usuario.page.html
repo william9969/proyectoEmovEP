@@ -1,0 +1,72 @@
+<ion-content>
+
+  <ion-grid class="grid1">
+  
+      <ion-row class="row1">
+          <ion-col>
+  
+          </ion-col>
+      </ion-row>
+  
+      <ion-row class="row2">
+          <ion-col>
+  
+          </ion-col>
+      </ion-row>
+  
+  </ion-grid>
+  
+  <ion-slide>
+      <div class="contaier-login">
+          <ion-grid>
+              <ion-row>
+                  <ion-col>
+                      <h1 style="color: black;">Registrar Multa</h1>
+                  </ion-col>
+              </ion-row>
+              <ion-row>
+                  <ion-col>
+                      <ion-list>
+                        <ion-label position="stacked">Imagen:</ion-label>
+                        <ion-input  [(ngModel)]="multa.imagen"></ion-input>
+                        <ion-button style="width: 50%;" color="primary" shape="round" fill="solid">
+                          <input type="file" class="upload" (change)="fileUpload($event.target.files)">
+                        </ion-button>
+                      <br />
+                        <ion-item>
+                            <ion-icon name="card" class="icon-login"></ion-icon>
+                            <ion-input name="car-id" type="text" required placeholder="Placa" [(ngModel)]="multa.placa"></ion-input>
+                        </ion-item>
+                        <br />
+                          <ion-item>
+                            <ion-icon name="calendar" class="icon-login"></ion-icon>
+                            <ion-datetime displayFormat="MM/DD/YYYY" name="fecha"[(ngModel)]="multa.fecha"></ion-datetime>
+                        </ion-item>
+                        <br />
+                          <ion-item>
+                            <ion-icon name="location" class="icon-login"></ion-icon>
+                            <ion-input name="direccion" type="text" required placeholder="Direccion" [(ngModel)]="multa.direccion"></ion-input>
+                        </ion-item>
+                        <br />
+                          <ion-item>
+                              <ion-icon name="albums" class="icon-login"></ion-icon>
+                              <ion-input name="descripcion" type="text" required placeholder="Descripcion" [(ngModel)]="multa.descripcion"></ion-input>
+                          </ion-item>
+                        <br />
+                        <ion-item>
+                          <ion-icon name="cash" class="icon-login"></ion-icon>
+                          <ion-input name="dinero" type="text" required placeholder="Pago" [(ngModel)]="multa.pago"></ion-input>
+                      </ion-item>
+                      </ion-list>
+                  </ion-col>
+              </ion-row>
+              <ion-row>
+                  <ion-col>
+                      <ion-label>
+                        <ion-button id="botonEnviar" color="primary" shape="round" fill="solid"(click)="registrar()">Registrar</ion-button>
+                      </ion-label>
+                  </ion-col>
+              </ion-row>
+          </ion-grid>
+      </div>
+  </ion-slide>

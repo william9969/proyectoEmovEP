@@ -29,9 +29,9 @@ export class LoginPage implements OnInit {
       this.usuario2=data[0]
       try{
         if(this.usuario2.correo==correo && this.usuario2.clave==clave && this.usuario2.rol=='agente'){
-          this.route.navigate(['principalAgentes']);
+          this.route.navigate(['privado/principalAgentes']);
         }else if(this.usuario2.correo==correo && this.usuario2.clave==clave && this.usuario2.rol=='cliente'){
-          this.route.navigate(['principalConductores']);
+          this.route.navigate(['publico/principalConductores']);
         }
       }
       catch(error){console.log('Error: ->', error);
@@ -57,6 +57,6 @@ export class LoginPage implements OnInit {
     this.usuario2.clave = user.additionalUserInfo.profile['id'];
     this.usuario2.rol = "cliente";
     this.usuarioService.save(this.usuario2);
-    this.route.navigate(['principalConductores']);
+    this.route.navigate(['publico/principalConductores']);
   }
 }

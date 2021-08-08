@@ -50,6 +50,18 @@ const routes: Routes = [
   {
     path: 'publico/mismultas',
     loadChildren: () => import('./publico/mismultas/mismultas.module').then( m => m.MismultasPageModule)
+  },
+  {
+    path: 'privado/registrar-multa',
+    loadChildren: () => import('./privado/registrar-multa/registrar-multa.module').then( m => m.RegistrarMultaPageModule)
+  },
+  {
+    path: 'registrar',
+    loadChildren: () => import('./registrar/registrar.module').then( m => m.RegistrarPageModule)
+  },
+  {
+    path: 'privado/registrar-multa-usuario',
+    loadChildren: () => import('./privado/registrar-multa-usuario/registrar-multa-usuario.module').then( m => m.RegistrarMultaUsuarioPageModule)
   }
 
   

@@ -1,0 +1,80 @@
+<!--<ion-header>
+  <ion-toolbar>
+    <ion-title>Registrar Multa</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-searchbar
+    showcancelbutton=""
+    (ionInput)="filterList($event)"
+  ></ion-searchbar>
+
+  <ion-list lines="none">
+    <ion-item *ngFor="let usuario of usuarios">
+      <ion-label class="ion-text-wrap">
+        <ion-text color="primary">
+          <h3>{{ usuario.cedula }}</h3>
+        </ion-text>
+        <p>{{ usuario.nombre }} </p> 
+        <p>{{ usuario.apellido }}</p>
+      </ion-label>
+      <ion-button id="botonEnviar" color="primary" shape="round" fill="solid"(click)="registrar()">Registrar</ion-button>
+    </ion-item>
+  </ion-list>
+</ion-content>-->
+<ion-content>
+
+  <ion-grid class="grid1">
+  
+      <ion-row class="row1">
+          <ion-col>
+  
+          </ion-col>
+      </ion-row>
+  
+      <ion-row class="row2">
+          <ion-col>
+  
+          </ion-col>
+      </ion-row>
+  
+  </ion-grid>
+  
+  <ion-slide>
+    <div class="contaier-login">
+        <ion-grid>
+            <ion-row>
+                <ion-col>
+                    <h1 style="color: white;">Buscar Usuario</h1>
+                </ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col>
+                  <ion-searchbar
+                  showcancelbutton=""
+                  (ionInput)="filterList($event)"
+                ></ion-searchbar>
+                </ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col>
+                  <div *ngFor="let usuario of usuarios | async">
+                    <ion-item>
+                      <ion-label>
+                        <h2>{{ usuario.nombre }}</h2>
+                        <h2>{{ usuario.apellido }}</h2>
+                      </ion-label>
+                      <ion-button id="botonEnviar" color="primary" shape="round" fill="solid"(click)="registrar(usuario)">Registrar</ion-button>
+                    </ion-item>
+                    
+                    </div>
+                    <app-demo icon="alarm-outline" (updateData)="update($event)"></app-demo>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </div>
+</ion-slide>
