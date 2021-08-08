@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-
+import { EmailComposer } from '@ionic-native/email-composer/ngx';
 @Component({
   selector: 'app-contactenos',
   templateUrl: './contactenos.page.html',
@@ -8,7 +8,11 @@ import { Router } from '@angular/router';
 })
 export class ContactenosPage implements OnInit {
 
-  constructor(private router:Router) { }
+   //parametros
+   subject='';
+   body='';
+  constructor(private router:Router,
+    public  emailComposer: EmailComposer) { }
 
   ngOnInit() {
   }
@@ -24,5 +28,21 @@ export class ContactenosPage implements OnInit {
   navegar(nombre: any){
     //console.log(nombre)
     this.router.navigate([nombre])
+  }
+  send(){
+    let email = {
+      to: 'jessicaguncay45@gmail.com',
+      cc: 'wsinchi69@gmail.com',
+      bcc: [],
+      attachments: [
+        
+      ],
+      subject: this.subject,
+      body: this.body,
+      isHtml: true,
+      app:"Gmail"
+    }
+    this.emailComposer.open(email);
+    console.log(email);
   }
 }
