@@ -3,6 +3,7 @@
     <script type="module" src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/ionic.esm.js"></script>
     <script nomodule src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/ionic.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@ionic/core/css/ionic.bundle.css" />
+    <link rel="stylesheet" href="contactenos.page.scss" />
     <style>
       :root {
         --ion-safe-area-top: 20px;
@@ -50,7 +51,80 @@
       </ion-header>
       <ion-content class="ion-padding">
         
-     
+        <ion-list lines="full" class="ion-no-margin">
+          <ion-list-header lines="full">
+            <ion-label>
+              Envíenos un mail
+            </ion-label>
+          </ion-list-header>
+          <br>
+          <ion-item>
+            <ion-icon color="primary" name="person-circle-outline"></ion-icon>
+            <ion-label position="fixed"> Nombres: </ion-label>
+            <ion-input placeholder="Escriba sus nombres"></ion-input>
+            <br>
+           
+          </ion-item>
+          <br>
+          <ion-item>
+            <ion-icon color="primary" name="mail-sharp"></ion-icon>
+            <ion-label position="fixed">Email: </ion-label>
+            <ion-input placeholder="Escriba su correo"></ion-input>
+            <br>
+          </ion-item>
+          <br>
+          <ion-item>
+            <ion-icon ></ion-icon>
+            <ion-label position="fixed">Asunto:  </ion-label>
+            <ion-input [(ngModel)]="subject" type="text" placeholder="Agregue Asunto"></ion-input>
+            <br>
+          </ion-item>
+          <br>
+          <ion-item>
+            <ion-icon color="primary" name="chatbubble"></ion-icon>
+            <ion-label position="fixed">Comentario: </ion-label>
+            <ion-textarea [(ngModel)]="body" type="text" cols="60" position="stacked" placeholder="Descripcion del mensaje"></ion-textarea>
+            <br>
+          </ion-item>
+          <br>
+
+          <ion-button (click)="send()">
+            Enviar Mensaje 
+            <ion-icon slot="end" name="send-sharp"></ion-icon>
+          </ion-button>
+
+        </ion-list>
+        <br>
+        <ion-list>
+          <ion-list-header>Información del Contacto</ion-list-header>
+          <br>
+
+          <ion-item>
+            
+            <ion-avatar>
+              <ion-icon color="secondary" name="location"></ion-icon>
+            </ion-avatar>
+    
+            <p>Dirección: Carlos Arizaga Toral y Tarquino Cordero </p>
+          </ion-item>
+          <ion-item>
+            
+            <ion-avatar>
+              <ion-icon color="secondary" name="call"></ion-icon>
+            </ion-avatar>
+          
+            <p>Teléfono: (593) 997 338 144 </p>
+          </ion-item>
+          <ion-item>
+            <ion-avatar>
+              <ion-icon color="secondary" name="mail"></ion-icon>
+            </ion-avatar>
+            
+            <p>Email: jessicaguncay45@gmail.com </p>
+          
+          </ion-item>
+        </ion-list>
+
       </ion-content>
     </div>
   </ion-app>
@@ -83,7 +157,7 @@
           <ion-label>Instagram</ion-label>
           
         </ion-chip>
-        
+
       </p>
   </ion-toolbar>
 </ion-footer>

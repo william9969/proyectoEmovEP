@@ -1,11 +1,6 @@
-ion-content{
-    background-color: #E8F0F2;
+:host {
+    ion-content {
+        --background: linear-gradient(-135deg, var(--ion-color-primary-shade), var(--ion-color-light))
+    }
 }
 
-ion-card {
-    background-color: #eefdff;
-}
-
-ion-card img{
-    
-}
