@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { MultasService } from 'src/app/services/multas.service';
 
 @Component({
   selector: 'app-mismultas',
@@ -8,9 +9,13 @@ import { Router } from '@angular/router';
 })
 export class MismultasPage implements OnInit {
 
-  constructor(private router: Router) { }
+  constructor(private router: Router,
+    private mismultasServices: MultasService) { }
+  
+    mismultas:any;
 
   ngOnInit() {
+    this.mismultas = this.mismultasServices.getMultas();
   }
   public menuConductores = [
     { icon: 'home-outline', nombre: 'Inicio',path:'publico/principalConductores'},
