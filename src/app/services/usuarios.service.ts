@@ -12,11 +12,9 @@ export class UsuariosService {
 
   save(usuario: Usuario){
     const refUsuarios = this.afs.collection("usuario");
-
     if(usuario.uid == null){
       usuario.uid = this.afs.createId();
     }
-
     refUsuarios.doc(usuario.uid).set(Object.assign({}, usuario));
     return true;
   }
@@ -31,11 +29,18 @@ export class UsuariosService {
     return this.afs.collection('usuario',
       ref => ref.where('correo', '==', correo).where('clave','==',clave)).valueChanges();
   }
+  findCorreo(correo: string): Observable<any>{
+    console.log('Correo: ' + correo);
+    return this.afs.collection('usuario',
+      ref => ref.where('correo', '==', correo)).valueChanges();
+  }
 
   findId(cedula: string): Observable<any>{
     console.log('Cedula: ' + cedula);
     return this.afs.collection('usuario',
       ref => ref.where('cedula', '==', cedula).where('rol','==', "cliente")).valueChanges();
   }
+
+
   
 }

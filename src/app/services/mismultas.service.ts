@@ -2,7 +2,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
-import { misMulta } from '../domain/misMultas';
+import { Multa } from '../domain/multa';
 import { Usuario } from '../domain/usuario';
 
 @Injectable({
@@ -13,8 +13,10 @@ export class MismultasService {
   constructor(public afs: AngularFirestore) { }
 
   getMisMultas(): Observable<any[]>{
-    return this.afs.collection("misMultas", 
+    
+    return this.afs.collection("multa", 
     ).valueChanges();
+    
   }
 }
 
