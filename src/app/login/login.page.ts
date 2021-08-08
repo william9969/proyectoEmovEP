@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
-import { Router } from '@angular/router';
+import { NavigationExtras,Router } from '@angular/router';
 import * as firebase from 'firebase';
 import { Usuario } from '../domain/usuario';
 import { UsuariosService } from '../services/usuarios.service';
@@ -14,6 +14,8 @@ export class LoginPage implements OnInit {
 
   usuario: Usuario = new Usuario();
   usuario2: Usuario = new Usuario();
+  newUsuario: Usuario = new Usuario();
+  valUsr: Usuario = new Usuario();
 
   constructor(private usuarioService: UsuariosService,
     private route:Router, private afAuth: AngularFireAuth) { }
@@ -29,9 +31,19 @@ export class LoginPage implements OnInit {
       this.usuario2=data[0]
       try{
         if(this.usuario2.correo==correo && this.usuario2.clave==clave && this.usuario2.rol=='agente'){
-          this.route.navigate(['privado/principalAgentes']);
+          let params: NavigationExtras ={
+            queryParams: {
+              usuario2: this.usuario2
+            }
+          }
+          this.route.navigate(['privado/principalAgentes'],params);
         }else if(this.usuario2.correo==correo && this.usuario2.clave==clave && this.usuario2.rol=='cliente'){
-          this.route.navigate(['publico/principalConductores']);
+          let params: NavigationExtras ={
+            queryParams: {
+              usuario2: this.usuario2
+            }
+          }
+          this.route.navigate(['publico/principalConductores'],params);
         }
       }
       catch(error){console.log('Error: ->', error);
@@ -44,19 +56,39 @@ export class LoginPage implements OnInit {
 
     const user = await this.afAuth.signInWithPopup(new firebase.default.auth.GoogleAuthProvider());
 
-    const nombre = user.additionalUserInfo.profile['given_name'];
+   const nombre = user.additionalUserInfo.profile['given_name'];
     const apellido= user.additionalUserInfo.profile['family_name'];
-
-    const mensaje = "Bienvenido: " + nombre + ", " + apellido;
-
-    alert(mensaje);
+    const correo= user.additionalUserInfo.profile['email'];
+    //const mensaje = "Bienvenido: " + nombre + ", " + apellido;
+    
+  // alert(mensaje);
     this.usuario2.uid = user.additionalUserInfo.profile['id'];
     this.usuario2.nombre = user.additionalUserInfo.profile['given_name'];
     this.usuario2.apellido =  user.additionalUserInfo.profile['family_name'];
     this.usuario2.correo = user.additionalUserInfo.profile['email'];
+    
     this.usuario2.clave = user.additionalUserInfo.profile['id'];
     this.usuario2.rol = "cliente";
-    this.usuarioService.save(this.usuario2);
-    this.route.navigate(['publico/principalConductores']);
+    //console.log("Esto devuelve",this.usuarioService.findCorreo(this.usuario2.correo))
+    //this.usuario2.cedula = "123";
+    this.usuarioService.findCorreo(correo).subscribe(data=>{
+      this.valUsr = data[0]
+      if (this.valUsr==null){
+        console.log("usuario nulo")
+        //this.usuario2.cedula="123";
+      }
+      else {
+        this.usuario2.cedula=this.valUsr.cedula
+        //console.log("ya no es nulo")
+      }
+      this.usuarioService.save(this.usuario2);
+    });
+    let params: NavigationExtras ={
+      queryParams: {
+        usuario2: this.usuario2
+      }
+    }
+    this.route.navigate(['publico/principalConductores'],params);
+    
   }
 }

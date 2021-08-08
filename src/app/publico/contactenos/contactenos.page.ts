@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
 import { EmailComposer } from '@ionic-native/email-composer/ngx';
+import { Usuario } from 'src/app/domain/usuario';
 @Component({
   selector: 'app-contactenos',
   templateUrl: './contactenos.page.html',
@@ -11,8 +12,15 @@ export class ContactenosPage implements OnInit {
    //parametros
    subject='';
    body='';
+   usrLoggContactenos: Usuario=new Usuario();
   constructor(private router:Router,
-    public  emailComposer: EmailComposer) { }
+    public  emailComposer: EmailComposer, private route: ActivatedRoute) {
+      route.queryParams.subscribe(params => {
+        if (this.router.getCurrentNavigation().extras.queryParams){
+          this.usrLoggContactenos=this.router.getCurrentNavigation().extras.queryParams.usr;     
+        }
+    })
+     }
 
   ngOnInit() {
   }
@@ -25,10 +33,7 @@ export class ContactenosPage implements OnInit {
     { icon: 'people-outline', nombre: 'Acerca de',path:'publico/acerca-de'},
     { icon: 'mail-outline', nombre: 'Contactenos',path:'publico/contactenos'},
   ];
-  navegar(nombre: any){
-    //console.log(nombre)
-    this.router.navigate([nombre])
-  }
+ 
   send(){
     let email = {
       to: 'jessicaguncay45@gmail.com',
@@ -43,6 +48,15 @@ export class ContactenosPage implements OnInit {
       app:"Gmail"
     }
     this.emailComposer.open(email);
-    console.log(email);
+  // console.log(email);
+  }
+  navegar(nombre: any){
+    //console.log(nombre)
+    let params: NavigationExtras ={
+      queryParams: {
+        usr: this.usrLoggContactenos
+      }
+    }
+    this.router.navigate([nombre],params)
   }
 }

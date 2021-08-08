@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
+import { Usuario } from 'src/app/domain/usuario';
 import { MultasService } from 'src/app/services/multas.service';
 
 @Component({
@@ -9,8 +10,15 @@ import { MultasService } from 'src/app/services/multas.service';
 })
 export class MultasPage implements OnInit {
   multas:any;
+  usrMultas:Usuario=new Usuario();
   constructor(private router: Router,
-    private multasService : MultasService) { }
+    private multasService : MultasService,route:ActivatedRoute) { 
+      route.queryParams.subscribe(params => {
+        if (this.router.getCurrentNavigation().extras.queryParams){
+          this.usrMultas=this.router.getCurrentNavigation().extras.queryParams.usr;
+        } 
+      })
+    }
 
   ngOnInit() {
     this.multas = this.multasService.getMultas();
@@ -24,6 +32,11 @@ export class MultasPage implements OnInit {
   ];
   navegar(nombre: any){
     //  console.log(nombre)
+    let params: NavigationExtras ={
+      queryParams: {
+        usr: this.usrMultas
+      }
+    }
       this.router.navigate([nombre])
   }
 }
