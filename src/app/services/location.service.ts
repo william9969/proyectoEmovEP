@@ -50,7 +50,7 @@ export class LocationService {
     let latlng = { lat: location.latitude, lng: location.longitude };
     geocoder.geocode({ location: latlng }, (results, status) => {
       if (results != null) {
-        console.log(results)
+     //   console.log(results)
         location.address = results[0].formatted_address;
         location.address2= results[2].formatted_address;
         return location.address,location.address2;

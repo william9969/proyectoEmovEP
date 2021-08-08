@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router,NavigationExtras,ActivatedRoute } from '@angular/router';
 import { LocationService } from 'src/app/services/location.service';
+import { Usuario } from '../../domain/usuario';
 @Component({
   selector: 'app-agencias',
   templateUrl: './agencias.page.html',
@@ -17,7 +18,16 @@ icons = {
   center: "https://cdn1.iconfinder.com/data/icons/Map-Markers-Icons-Demo-PNG/48/Map-Marker-Marker-Inside-Chartreuse.png",
   pointer: "https://cdn1.iconfinder.com/data/icons/Map-Markers-Icons-Demo-PNG/48/Map-Marker-Ball-Azure.png"
 };
-constructor(private locationService: LocationService, private router: Router) { }
+usrLoggAgencias: Usuario = new Usuario();
+constructor(private route: ActivatedRoute,private locationService: LocationService, private router: Router) { 
+    route.queryParams.subscribe(params => {
+      //console.log(params)
+      if (this.router.getCurrentNavigation().extras.queryParams){
+        this.usrLoggAgencias=this.router.getCurrentNavigation().extras.queryParams.usr;     
+        //console.log(this.usrLoggAgencias.cedula)
+      }
+  })
+}
 zoom = 15;
 lat = -2.9086648419669126;
 lng = -79.03865656101168;
@@ -40,16 +50,19 @@ centerLocation:any= {
   latitude: null,
   longitude: null,
 };
+
 public menuConductores = [
-  { icon: 'home-outline', nombre: 'Inicio',path:'privado/principalAgentes'},
-    { icon: 'clipboard-outline', nombre: 'Crear Multas',path:'privado/multas'},
-    { icon: 'business-outline', nombre: 'Agencias EmovEP',path:'privado/agencias'},
-    { icon: 'people-outline', nombre: 'Acerca de',path:'privado/acerca-de'},
-    { icon: 'mail-outline', nombre: 'Contactenos',path:'privado/contactenos'},
+  { icon: 'home-outline', nombre: 'Inicio',path:'publico/principalConductores'},
+  { icon: 'clipboard-outline', nombre: 'Multas e Infracciones',path:'publico/mismultas'},
+  { icon: 'business-outline', nombre: 'Agencias EmovEP',path:'publico/agencias'},
+  { icon: 'car-outline', nombre: 'Matriculacion Vehicular',path:'publico/principalConductores'},
+  { icon: 'earth-outline', nombre: 'Revicion Tecnica Vehicular',path:'publico/principalConductores'},
+  { icon: 'people-outline', nombre: 'Acerca de',path:'publico/acerca-de'},
+  { icon: 'mail-outline', nombre: 'Contactenos',path:'publico/contactenos'},
 ];
 async ngOnInit() {
   this.currentLocation=await this.locationService.getCurrentLocation();
-  console.log(this.currentLocation);
+  //console.log(this.currentLocation);
 }
 calculateDistance(lon1:any, lon2:any, lat1:any, lat2:any){
   let p = 0.017453292519943295;
@@ -98,6 +111,11 @@ newAddressC(event: any){
 }
 navegar(nombre: any){
   //console.log(nombre)
-  this.router.navigate([nombre])
+  let params: NavigationExtras ={
+    queryParams: {
+      usr: this.usrLoggAgencias
+    }
+  }
+  this.router.navigate([nombre],params)
 }
 }
