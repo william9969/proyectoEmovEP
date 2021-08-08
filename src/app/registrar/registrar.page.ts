@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute} from '@angular/router';
+import { ActivatedRoute, NavigationExtras} from '@angular/router';
 import { Usuario } from '../domain/usuario';
 import { UsuariosService } from '../services/usuarios.service';
 import { Router } from '@angular/router';
@@ -39,7 +39,12 @@ export class RegistrarPage implements OnInit {
     this.usuario.rol="cliente";
     let user = this.usuarioService.save(this.usuario);
     if (user == true) {
-      this.router.navigate(['publico/principalConductores']);
+      let params: NavigationExtras ={
+        queryParams: {
+          usr: this.usuario
+        }
+      }
+      this.router.navigate(['publico/principalConductores'],params);
     }
   }
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
+import { Usuario } from 'src/app/domain/usuario';
 import { LocationService } from 'src/app/services/location.service';
 @Component({
   selector: 'app-agencias',
@@ -17,7 +18,14 @@ icons = {
   center: "https://cdn1.iconfinder.com/data/icons/Map-Markers-Icons-Demo-PNG/48/Map-Marker-Marker-Inside-Chartreuse.png",
   pointer: "https://cdn1.iconfinder.com/data/icons/Map-Markers-Icons-Demo-PNG/48/Map-Marker-Ball-Azure.png"
 };
-  constructor(private locationService: LocationService, private router: Router) { }
+usrAgencias: Usuario= new Usuario();
+  constructor(private locationService: LocationService, route: ActivatedRoute, private router: Router) { 
+    route.queryParams.subscribe(params => {
+      if (this.router.getCurrentNavigation().extras.queryParams){
+        this.usrAgencias=this.router.getCurrentNavigation().extras.queryParams.usr;
+      } 
+    })
+  }
   zoom = 15;
   lat = -2.9086648419669126;
   lng = -79.03865656101168;
@@ -99,7 +107,12 @@ icons = {
   }
   navegar(nombre: any){
     //  console.log(nombre)
-      this.router.navigate([nombre])
+    let params: NavigationExtras ={
+      queryParams: {
+        usr: this.usrAgencias
+      }
+    }
+      this.router.navigate([nombre],params)
   }
 
 }

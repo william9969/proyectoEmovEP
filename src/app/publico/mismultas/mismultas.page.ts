@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { NavigationExtras, Router } from '@angular/router';
+import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
+import { Usuario } from 'src/app/domain/usuario';
 import { MismultasService } from 'src/app/services/mismultas.service';
 
 @Component({
@@ -10,8 +11,15 @@ import { MismultasService } from 'src/app/services/mismultas.service';
 export class MismultasPage implements OnInit {
 
   mismultas:any;
+  usrLoggMultas: Usuario= new Usuario();
   constructor(private router: Router,
-    private mismultasServices: MismultasService) { }
+    private mismultasServices: MismultasService, route: ActivatedRoute) { 
+      route.queryParams.subscribe(params => {
+        if (this.router.getCurrentNavigation().extras.queryParams){
+          this.usrLoggMultas=this.router.getCurrentNavigation().extras.queryParams.usr;     
+        }
+    })
+    }
   public menuConductores = [
     { icon: 'home-outline', nombre: 'Inicio',path:'publico/principalConductores'},
     { icon: 'clipboard-outline', nombre: 'Multas e Infracciones',path:'publico/mismultas'},
@@ -37,7 +45,12 @@ export class MismultasPage implements OnInit {
   }
   
   navegar(nombre: any){
-    console.log(nombre)
-    this.router.navigate([nombre])
+    //console.log(nombre)
+    let params: NavigationExtras ={
+      queryParams: {
+        usr: this.usrLoggMultas
+      }
+    }
+    this.router.navigate([nombre],params)
   }
 }
