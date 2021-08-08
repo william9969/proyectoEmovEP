@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
+import { Usuario } from 'src/app/domain/usuario';
 
 @Component({
   selector: 'app-acerca-de',
@@ -7,8 +8,14 @@ import { Router } from '@angular/router';
   styleUrls: ['./acerca-de.page.scss'],
 })
 export class AcercaDePage implements OnInit {
-
-  constructor(private router: Router) { }
+  usrAcerca: Usuario=new Usuario();
+  constructor(private router: Router, route: ActivatedRoute) { 
+    route.queryParams.subscribe(params => {
+      if (this.router.getCurrentNavigation().extras.queryParams){
+        this.usrAcerca=this.router.getCurrentNavigation().extras.queryParams.usr;
+      } 
+    })
+  }
 
   ngOnInit() {
   }
@@ -22,7 +29,12 @@ export class AcercaDePage implements OnInit {
 
   navegar(nombre: any){
     //console.log(nombre)
-    this.router.navigate([nombre])
+    let params: NavigationExtras ={
+      queryParams: {
+        usr: this.usrAcerca
+      }
+    }
+    this.router.navigate([nombre],params)
 }
 
 }

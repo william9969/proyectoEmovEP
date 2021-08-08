@@ -1,14 +1,22 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-
+import { Router , ActivatedRoute,NavigationExtras} from '@angular/router';
+import { Usuario } from '../../domain/usuario';
+import * as firebase from 'firebase';
 @Component({
   selector: 'app-principal',
   templateUrl: './principal.page.html',
   styleUrls: ['./principal.page.scss'],
 })
 export class PrincipalPage implements OnInit {
-
-  constructor(private router: Router) { }
+  usrLogg: Usuario = new Usuario();
+  constructor(private route: ActivatedRoute,private router: Router) { 
+    route.queryParams.subscribe(params => {
+      if (this.router.getCurrentNavigation().extras.queryParams){
+        this.usrLogg=this.router.getCurrentNavigation().extras.queryParams.usuario2;
+        
+      } 
+    })
+  }
   ngOnInit() {
   }
   public menuAgente = [
@@ -20,7 +28,11 @@ export class PrincipalPage implements OnInit {
   ];
 
   navegar(nombre: any){
-    //  console.log(nombre)
-      this.router.navigate([nombre])
+    let params: NavigationExtras ={
+      queryParams: {
+        usr: this.usrLogg
+      }
+    }
+      this.router.navigate([nombre],params)
   }
 }
