@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>comprobante</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <form (ngSubmit) = "createPdf()" [formGroup]="myForm">
+    <ion-item>
+      <ion-label>Include logo image?</ion-label>
+      <ion-checkbox formControlName="showLogo" slot="start"></ion-checkbox>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">Form</ion-label>
+      <ion-input formControlName="form"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">To</ion-label>
+      <ion-input formControlName="to"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">Text</ion-label>
+      <ion-textarea formControlName="text" rows='3'></ion-textarea>
+    </ion-item>
+    <ion-button expand="full" (click)="createPdf()" type="submit">Create PDF</ion-button>
+    <ion-button expand="full" (click)="downloadPdf()" color="secundary" [disabled]='!pdfObj'>Save PDF</ion-button>
+  </form>
+</ion-content>

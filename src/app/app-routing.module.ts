@@ -62,7 +62,12 @@ const routes: Routes = [
   {
     path: 'privado/registrar-multa-usuario',
     loadChildren: () => import('./privado/registrar-multa-usuario/registrar-multa-usuario.module').then( m => m.RegistrarMultaUsuarioPageModule)
+  },
+  {
+    path: 'publico/comprobante',
+    loadChildren: () => import('./publico/comprobante/comprobante.module').then( m => m.ComprobantePageModule)
   }
+
 
   
 ];
