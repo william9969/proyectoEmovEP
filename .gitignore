@@ -41,3 +41,8 @@ package-lock.json
 android/build.gradle
 android/app/src/main/res/xml/config.xml
 android/app/capacitor.build.gradle
+android/app/capacitor.build.gradle
+android/app/src/main/assets/capacitor.plugins.json
+android/capacitor.settings.gradle
+android/variables.gradle
+android/variables.gradle
