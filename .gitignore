@@ -35,3 +35,9 @@ android/build.gradle
 android/build.gradle
 android/gradle/wrapper/gradle-wrapper.properties
 android/build.gradle
+android/app/capacitor.build.gradle
+package.json
+package-lock.json
+android/build.gradle
+android/app/src/main/res/xml/config.xml
+android/app/capacitor.build.gradle
