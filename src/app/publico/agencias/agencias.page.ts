@@ -57,6 +57,7 @@ public menuConductores = [
   { icon: 'business-outline', nombre: 'Agencias EmovEP',path:'publico/agencias'},
   { icon: 'car-outline', nombre: 'Matriculacion Vehicular',path:'publico/principalConductores'},
   { icon: 'earth-outline', nombre: 'Revicion Tecnica Vehicular',path:'publico/principalConductores'},
+  { icon: 'document', nombre: 'Comprobante de pago',path:'publico/comprobante'},
   { icon: 'people-outline', nombre: 'Acerca de',path:'publico/acerca-de'},
   { icon: 'mail-outline', nombre: 'Contactenos',path:'publico/contactenos'},
 ];
