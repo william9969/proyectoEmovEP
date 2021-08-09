@@ -25,5 +25,10 @@ export class MultasService {
     return this.afs.collection("multa", 
     ).valueChanges();
   }
+
+  findUser(cedula: string): Observable<any>{
+    return this.afs.collection('multa',
+      ref => ref.where('cedula', '==', cedula)).valueChanges();
+  }
   
 }

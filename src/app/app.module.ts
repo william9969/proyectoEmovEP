@@ -14,6 +14,7 @@ import { EmailComposer } from '@ionic-native/email-composer/ngx';
 import { HttpClientModule } from '@angular/common/http';
 import { FileOpener } from '@ionic-native/file-opener/ngx';
 
+
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
