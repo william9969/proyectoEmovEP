@@ -27,15 +27,16 @@ export class MismultasPage implements OnInit {
     }
     )
     }
-  public menuConductores = [
-    { icon: 'home-outline', nombre: 'Inicio',path:'publico/principalConductores'},
-    { icon: 'clipboard-outline', nombre: 'Multas e Infracciones',path:'publico/mismultas'},
-    { icon: 'business-outline', nombre: 'Agencias EmovEP',path:'publico/agencias'},
-    { icon: 'car-outline', nombre: 'Matriculacion Vehicular',path:''},
-    { icon: 'earth-outline', nombre: 'Revicion Tecnica Vehicular',path:''},
-    { icon: 'people-outline', nombre: 'Acerca de',path:'publico/acerca-de'},
-    { icon: 'mail-outline', nombre: 'Contactenos',path:'publico/contactenos'},
-  ];
+    public menuConductores = [
+      { icon: 'home-outline', nombre: 'Inicio',path:'publico/principalConductores'},
+      { icon: 'clipboard-outline', nombre: 'Multas e Infracciones',path:'publico/mismultas'},
+      { icon: 'business-outline', nombre: 'Agencias EmovEP',path:'publico/agencias'},
+      { icon: 'car-outline', nombre: 'Matriculacion Vehicular',path:'publico/principalConductores'},
+      { icon: 'earth-outline', nombre: 'Revicion Tecnica Vehicular',path:'publico/principalConductores'},
+      { icon: 'document', nombre: 'Comprobante de pago',path:'publico/comprobante'},
+      { icon: 'people-outline', nombre: 'Acerca de',path:'publico/acerca-de'},
+      { icon: 'mail-outline', nombre: 'Contactenos',path:'publico/contactenos'},
+    ];
   ngOnInit() {
      this.route.params.subscribe(
       (params : Params) => {this.usrLoggMultas = params.usr
