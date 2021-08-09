@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
+import { ActivatedRoute, NavigationExtras, Params, Router } from '@angular/router';
 import { Usuario } from 'src/app/domain/usuario';
 import { MismultasService } from 'src/app/services/mismultas.service';
 
@@ -12,13 +12,20 @@ export class MismultasPage implements OnInit {
 
   mismultas:any;
   usrLoggMultas: Usuario= new Usuario();
+  //cedula : string;
+
   constructor(private router: Router,
-    private mismultasServices: MismultasService, route: ActivatedRoute) { 
+    private mismultasServices: MismultasService, 
+    private route: ActivatedRoute) { 
       route.queryParams.subscribe(params => {
         if (this.router.getCurrentNavigation().extras.queryParams){
-          this.usrLoggMultas=this.router.getCurrentNavigation().extras.queryParams.usr;     
+          this.usrLoggMultas=this.router.getCurrentNavigation().extras.queryParams.usr;   
+          //this.mismultas = this.mismultasServices.findMultas(this.usrLoggMultas.cedula);
+          this.recuperarCedula(this.usrLoggMultas.cedula);
+          console.log(this.usrLoggMultas.cedula);
         }
-    })
+    }
+    )
     }
   public menuConductores = [
     { icon: 'home-outline', nombre: 'Inicio',path:'publico/principalConductores'},
@@ -30,8 +37,12 @@ export class MismultasPage implements OnInit {
     { icon: 'mail-outline', nombre: 'Contactenos',path:'publico/contactenos'},
   ];
   ngOnInit() {
-    this.mismultas = this.mismultasServices.getMisMultas();
+     this.route.params.subscribe(
+      (params : Params) => {this.usrLoggMultas = params.usr
+        console.log(this.usrLoggMultas);}
+    );
     
+    //console.log(this.usrLoggMultas.cedula);
   }
 
   mostrar(mismultas:any){
@@ -53,4 +64,9 @@ export class MismultasPage implements OnInit {
     }
     this.router.navigate([nombre],params)
   }
+  recuperarCedula( cedula: any){
+    this.mismultas = this.mismultasServices.findMultas(this.usrLoggMultas.cedula);
+    console.log(this.mismultas)
+  }
+ 
 }

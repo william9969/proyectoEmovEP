@@ -22,7 +22,8 @@ export class MultasService {
   }
 
   getMultas(): Observable<any[]>{
-    return this.afs.collection("multa", 
+    return this.afs.collection("multa",
+    
     ).valueChanges();
   }
   

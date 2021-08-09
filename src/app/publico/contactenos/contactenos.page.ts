@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
 import { EmailComposer } from '@ionic-native/email-composer/ngx';
 import { Usuario } from 'src/app/domain/usuario';
+
 @Component({
   selector: 'app-contactenos',
   templateUrl: './contactenos.page.html',
@@ -45,7 +46,8 @@ export class ContactenosPage implements OnInit {
       subject: this.subject,
       body: this.body,
       isHtml: true,
-      app:"Gmail"
+      app: 'gmail'
+      
     }
     this.emailComposer.open(email);
   // console.log(email);
