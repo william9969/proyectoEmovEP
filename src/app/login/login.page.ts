@@ -74,8 +74,8 @@ export class LoginPage implements OnInit {
     this.usuarioService.findCorreo(correo).subscribe(data=>{
       this.valUsr = data[0]
       if (this.valUsr==null){
-        console.log("usuario nulo")
-        //this.usuario2.cedula="123";
+       // console.log("usuario nulo")
+        this.usuario2.cedula="123";
       }
       else {
         this.usuario2.cedula=this.valUsr.cedula
