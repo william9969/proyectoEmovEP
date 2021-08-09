@@ -8,7 +8,7 @@ import { EmailComposer } from '@ionic-native/email-composer/ngx';
 
 import pdfMake from 'pdfmake/build/pdfmake';
 import pdfFonts from 'pdfmake/build/vfs_fonts';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
 import { Multa } from 'src/app/domain/multa';
 import { Usuario } from 'src/app/domain/usuario';
 import { UsuariosService } from 'src/app/services/usuarios.service';
@@ -36,7 +36,16 @@ export class ComprobantePage implements OnInit {
   descripcionMulta: any;
   pagoMulta: any;
   archivo: any;
-
+  public menuConductores = [
+    { icon: 'home-outline', nombre: 'Inicio',path:'publico/principalConductores'},
+    { icon: 'clipboard-outline', nombre: 'Multas e Infracciones',path:'publico/mismultas'},
+    { icon: 'business-outline', nombre: 'Agencias EmovEP',path:'publico/agencias'},
+    { icon: 'car-outline', nombre: 'Matriculacion Vehicular',path:'publico/principalConductores'},
+    { icon: 'earth-outline', nombre: 'Revicion Tecnica Vehicular',path:'publico/principalConductores'},
+    { icon: 'document', nombre: 'Comprobante de pago',path:'publico/comprobante'},
+    { icon: 'people-outline', nombre: 'Acerca de',path:'publico/acerca-de'},
+    { icon: 'mail-outline', nombre: 'Contactenos',path:'publico/contactenos'},
+  ];
   constructor(private route: ActivatedRoute, private router: Router,
     private fb: FormBuilder, private plt: Platform, private http: HttpClient,
     private fileOpener: FileOpener, private multaService: MultasService,
@@ -259,6 +268,16 @@ export class ComprobantePage implements OnInit {
           this.emailComposer.open(email);
           console.log(email);
         }*/
+  }
+  navegar(nombre: any){
+    let params: NavigationExtras ={
+      queryParams: {
+        usr: this.usr
+      }
+    }
+    //console.log(this.usrLogg)
+    this.router.navigate([nombre],params)
+    
   }
 
 }
