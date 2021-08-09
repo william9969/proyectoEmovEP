@@ -12,9 +12,17 @@ export class MismultasService {
 
   constructor(public afs: AngularFirestore) { }
 
+  findMultas(cedula: string): Observable<any[]>{
+    //console.log('Correo: ' + correo);ref => ref.where('cedula', '==', cedula)
+    return this.afs.collection("multa",
+    ref => ref.where('cedula', '==', cedula)).valueChanges();
+  }
+
+  
   getMisMultas(): Observable<any[]>{
     
-    return this.afs.collection("multa", 
+    
+    return this.afs.collection("multa",
     ).valueChanges();
     
   }

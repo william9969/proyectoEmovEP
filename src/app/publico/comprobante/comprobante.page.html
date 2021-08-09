@@ -17,6 +17,7 @@
       <ion-textarea style="display: none"  formControlName="text" rows='3' [disabled]= 'true'></ion-textarea>
     </ion-item>
     <ion-button expand="full" (click)="createPdf()" type="submit">Generar PDF</ion-button>
-    <ion-button expand="full" (click)="downloadPdf()" color="secundary" [disabled]='!pdfObj'>Enviar PDF</ion-button>
+    <ion-button expand="full" (click)="downloadPdf()" [disabled]='!pdfObj'>Descargar PDF</ion-button>
+    <ion-button expand="full" (click)="sendPdf()" [disabled]='!pdfObj'>Enviar PDF</ion-button>
   </form>
 </ion-content>
