@@ -91,4 +91,8 @@ export class LoginPage implements OnInit {
     this.route.navigate(['publico/principalConductores'],params);
     
   }
+
+  registrar(){
+    this.route.navigate(['registrar']);
+  }
 }

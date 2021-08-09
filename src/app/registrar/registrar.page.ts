@@ -47,4 +47,7 @@ export class RegistrarPage implements OnInit {
       this.router.navigate(['publico/principalConductores'],params);
     }
   }
+  regresar(){
+    this.router.navigate(['login']);
+  }
 }
