@@ -73,15 +73,18 @@ export class LoginPage implements OnInit {
     //this.usuario2.cedula = "123";
     this.usuarioService.findCorreo(correo).subscribe(data=>{
       this.valUsr = data[0]
-      if (this.valUsr==null){
+      if (this.valUsr.cedula==null){
        // console.log("usuario nulo")
         this.usuario2.cedula="123";
+       // this.usuarioService.save(this.usuario2);
+         this.usuarioService.save(this.usuario2);
       }
       else {
         this.usuario2.cedula=this.valUsr.cedula
+        this.usuarioService.save(this.usuario2);
         //console.log("ya no es nulo")
       }
-      this.usuarioService.save(this.usuario2);
+      
     });
     let params: NavigationExtras ={
       queryParams: {
