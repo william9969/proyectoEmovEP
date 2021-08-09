@@ -15,17 +15,15 @@ export class PrincipalPage implements OnInit {
     this.route.queryParams.subscribe(params => {
       if (this.router.getCurrentNavigation().extras.queryParams){
         this.usrLogg=this.router.getCurrentNavigation().extras.queryParams.usuario2;
-        //console.log(this.usrLogg)
-        if (this.usrLogg!=null){
-          if (this.usrLogg.cedula=="123"){
-            this.presentAlertPrompt()
-          }
+        console.log(this.usrLogg,"--------",this.usrLogg.cedula)
+        
+        if (this.usrLogg.cedula=="123" || this.usrLogg.cedula==undefined){
+          //console.log(this.usrLogg,this.usrLogg.cedula)
+          this.presentAlertPrompt();
         }
-        else {
+        if(this.usrLogg==null) {
           this.usrLogg=this.router.getCurrentNavigation().extras.queryParams.usr;
         }
-        
-
       }
     })
     this.nombreUsr=this.usrLogg.nombre;
