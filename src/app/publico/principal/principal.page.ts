@@ -79,7 +79,9 @@ export class PrincipalPage implements OnInit {
         usr: this.usrLogg
       }
     }
+    console.log(this.usrLogg)
     this.router.navigate([nombre],params)
+    
   }
 
 }

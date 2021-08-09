@@ -21,7 +21,8 @@ export class AcercaDePage implements OnInit {
   }
   public menuAgente = [
     { icon: 'home-outline', nombre: 'Inicio',path:'privado/principalAgentes'},
-    { icon: 'clipboard-outline', nombre: 'Crear Multas',path:'privado/multas'},
+    { icon: 'clipboard-outline', nombre: 'Crear Multas',path:'privado/registrar-multa'},
+    { icon: 'list-circle', nombre: 'Multas',path:'privado/multas'},
     { icon: 'business-outline', nombre: 'Agencias EmovEP',path:'privado/agencias'},
     { icon: 'people-outline', nombre: 'Acerca de',path:'privado/acerca-de'},
     { icon: 'mail-outline', nombre: 'Contactenos',path:'privado/contactenos'},
